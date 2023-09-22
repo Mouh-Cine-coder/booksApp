@@ -1,0 +1,784 @@
+:root {
+    --bg-color: #0c4a6e;
+    --card-bg-color: ;
+    --bg-red-700 : #b91c1c;
+    --hover-bg-red-800 : #991b1b;
+    --bg-yellow-400: #fbbf24;
+    --hover-bg-yellow-500: #f59e0b;
+}
+
+body::-webkit-scrollbar {
+    width: 2px;
+}
+
+
+.dashboard__content::-webkit-scrollbar,
+.container-table::-webkit-scrollbar {
+    width: 2px;
+}
+
+   
+.dashboard__content::-webkit-scrollbar-thumb,
+.container-table::-webkit-scrollbar {
+    background-color: darkgrey;
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+
+}
+
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.body-index{
+    background-color: var(--bg-color);
+    position: absolute;
+    z-index: -3;
+    overflow-x: none;
+}
+
+.logo{
+    color: white;
+}
+
+.navbar{
+    padding: 10px;
+    height: 55px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.categorie{
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 120px;
+    height: 45px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 20px 0px 0px 20px;
+    border-right: solid 0.1px gainsboro;
+}
+
+.category__choice {
+    text-align: center;
+}
+
+.liste-categorie{
+    position: absolute;
+    z-index: 3;
+    background-color: #D4D4D8;
+    top: 60.5px;
+    width: 160px;
+    padding: 10px;
+    border-radius: 15px;
+    color:black;
+    display: none;
+    box-shadow: 1px 1px 10px 2px black;
+}
+
+svg{
+    background-color: #ffffff;
+}
+
+.login{
+    background-color:rgb(255, 255, 255);
+    width: 80px;
+    height: 40px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.login:hover{
+    box-shadow: 1px 1px 5px 1px rgb(82, 82, 82);
+}
+
+.fa-circle-user {
+    border-radius: 20px;
+    font-size: 30px;
+}
+
+.connexion-down {
+    width: 130px;
+    padding: 10px 0px 10px 0px;
+    position: absolute;
+    z-index: 3;
+    top: 60px;
+    background-color:white;
+    color: black;
+    box-shadow: 1px 1px 10px 2px black;
+    border-radius: 10px;
+    display: none;
+}
+
+.connexion-down a{
+    text-decoration: none;
+}
+
+.mot-cnx {
+    background-color: white;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 10px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.mot-cnx:hover{
+    background-color: #1F3556;
+    color: white;
+}
+
+.mot-connexion {
+    font-weight: 300;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+}
+
+.mot-register {
+    font-weight: 500;
+}
+
+.toggle{
+    background: none;
+}
+
+.fa-bars{
+    position: relative;
+    top: 1px;
+    left: 5px;
+    font-size: 20px;
+}
+
+.fa-x{
+    display: none;
+    position: relative;
+    top: 1px;
+    left: 5px;  
+    font-size: 16px;
+}
+
+.toggle .fa-x{
+    display: none;
+}
+
+.fermer{
+    display: none;
+}
+.open .ouvrir{
+    display: none;
+}
+
+.open .fermer{
+    display: block;
+}
+
+.open .connexion-down{
+    display: block;
+}
+
+/********************* FIN NAV BAR STYLE *********************/
+
+
+.bulbes_main_image{
+    display: flex;
+    width: 100vw;
+    height: 520px;
+}
+
+.bulbes{
+    padding: 20px;
+    width: 50%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.background-gradient{
+    width: 550px;
+    height: 350px;
+    background: linear-gradient(to right, #1F3556, #161f2d, rgb(51, 41, 76));
+    filter: blur(80px);
+}
+
+.main_image{
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    height: 420px;
+}
+
+#bulbes{
+    width: 550px;
+    height: 350px;
+    position: absolute;
+    background: none;
+}
+
+#main_image{
+    width: 100%;
+    height: 100%;
+}
+
+.title-main-image{
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    background: none;
+    font-family: 'Concert One', sans-serif;
+    font-family: 'Patrick Hand',sans-serif;
+    letter-spacing: 2px;
+}
+
+#ph-1{
+    left: 150px;
+    top: 180px;
+}
+
+#ph-2{
+    left: 190px;
+    top: 270px;
+}
+
+.line-divesion-section{
+    display: flex;
+    justify-content: center;
+}
+
+.line-divesion-section hr{
+    width: 91%;
+    background-color: rgb(255, 255, 255);
+}
+
+
+/******************* FIN BULBES , MAIN IMAGE STYLE ******************/
+
+
+.title-populair-books{
+    color: white;
+    margin: 30px;
+    height: 50px;
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.arrow-carousel{
+    position: relative;
+    float: right;
+    display: flex;
+    top: -72px;
+    right: 211px;
+}
+
+.fa-circle-chevron-left{
+    background-color: white;
+    position: absolute;
+    right: 1px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 99px;
+}
+
+.fa-circle-chevron-right{
+    background-color: white;
+    position: absolute;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 99px;
+    
+}
+
+.center-carousel-pb {
+    margin: 0 auto;
+    max-width: 1085px;
+    height: 500px;
+}
+
+.carousel-populair-books{
+    height: 80%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.content{
+    height: 100%;
+    display: grid;
+    gap: 15px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.carte-populair-books {
+    background: rgb(22, 78, 99);
+    background: linear-gradient(0deg, rgba(22, 78, 99, 0.2399553571428571) 0%, rgba(14, 116, 144, 1) 39%);
+    width: 205px;
+    height: 400px;
+    border-radius: 10px 10px 0px 0px;
+    font-family: sans-serif;
+}
+
+.image-carte {
+    background: transparent;
+    width: 100%;
+    height: 65%;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
+    opacity: 0.97;
+}
+
+.image-carte:hover {
+    opacity: 1;
+}
+
+.infos-carte{
+    width: 100%;
+    height: fit-content;
+    border-radius: 0px 0px 10px 10px;
+    letter-spacing: 0.3px;
+}
+
+.title-carte{
+    background: none;
+    height: 30px;
+    padding: 7px;
+    font-size: 15px;
+    color: white;
+}
+
+.type-carte {
+    background: none;
+    padding: 7px;
+    color: white;
+    font-weight: 200;
+}
+
+.line-divesion-carte {
+    margin: 5px;
+}
+
+.price-carte-plus {
+    background: none;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-carte {
+    background: none;
+    padding: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carte-plus i {
+    background: none;
+}
+
+.carte-plus {
+    width: 25px;
+    height: 25px;
+    border-radius: 99px;
+    padding: 5px;
+    color: black;
+    background-color: #FFCA00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/******************************************************************************************
+*******************************************************************************************
+*********************************** hez men hnaya css **********************/
+/************************ BEST SELLERS ***************/
+
+.line2-divesion-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+
+/**************************** MAIN SHOP *****************/
+
+.choice-category{
+    position: sticky;
+    top: 0;
+    height: 50px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
+.choice-category.scrolled{
+    background-color: #1b1d2046;
+    backdrop-filter: blur(10px);
+    transition: 0.5s;
+}
+
+.choice-category.scrolled .btn-category{
+    background-color: white;
+    color: black;
+}
+
+.btn-category{
+    background: transparent;
+    outline: none;
+    height: 70%;
+    width: 100px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.188);
+    cursor: pointer;
+    font-family: sans-serif;
+    color: white;
+    padding: 5px;
+}
+.btn-category:hover{
+    font-size: 14px;
+    transition: 50ms;
+    box-shadow: 0.5px 0.5px 4px 0.1px white;
+}
+
+
+.grid-general{
+    margin-top: 30px;
+    justify-content: center;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    grid-gap: 20px;
+    grid-auto-flow: dense;
+}
+
+.bg-grid-carte{
+    width: 200px;
+    height: 365px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #969696, #00000000);
+}
+
+.products_notFound {
+    width: 200px;
+    height: 365px;
+    text-align: center;
+}
+.grid-carte-ms{
+    cursor: pointer;
+    color: white;
+    font-family: sans-serif;
+    width: 90%;
+    height: 90%;
+}
+
+.infos-grid{
+    text-align: center;
+    height: 30%;
+}
+
+.image-grid{
+    width: 100%;
+    height: 70%;
+}
+
+.title-main-books{
+    font-size: 11px;
+    height: 20px;
+    padding: 5px;
+}
+
+.line-main-books{
+    margin: 5px;
+}
+
+.writer-price, .value-writer-price{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;  
+}
+
+.writer-price p{
+    font-weight: inherit;
+    font-size: 8px;
+}
+
+.value-writer-price h4{
+    font-size: 10px;
+}
+
+.bt-add-cart{
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    width: 100px;
+    height: 20px;
+    border-radius: 20px;
+    border: 1px solid #67e8f944;
+    margin: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.bt-add-cart:hover{
+    background-color: #67e8f979;
+    transition: 300ms;
+    width: 101px;
+    height: 21px;
+}
+
+/**************************** Dashboard Side bar *****************/
+/********< !------------------- SECTION FORM. ---------------------->********/
+
+.main-addbook{
+    width: 100vw;
+    display: flex;
+    background-color:#111828;
+}
+
+.section-sidebar{
+    width: 5%;
+}
+
+.side-bar{
+    height: 100vh;
+    background-color: #111828;
+    width: 100%;
+    border-right: 0.5px solid rgb(255, 255, 255);
+}
+
+.side-bar--logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.li-side-bar--icons {
+    height: 80px;
+    text-align: center;
+    border-bottom: 0.5px solid rgb(255, 255, 255);
+}
+
+.li-side-bar--icons a{
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+}
+.li-side-bar--icons img{
+    width: 20px;
+    height: 25px;
+    margin-top: 15px;
+}
+.side-bar--description{
+    padding: 5px;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 8px;
+}
+
+/** temp css **/
+
+.form__catergories {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+label {
+    font-size: 25px;
+}
+
+
+
+tr,
+th,
+td {
+    padding: 20px;
+    text-align: center;
+    
+}
+
+tr {
+    border-bottom: 0.2px solid gray;
+}
+
+input {
+    color: black;
+    padding: 5px;
+}
+
+.dashboard {
+    background-color: #0E0A2D;
+    background-image: url("../images/rectangle.svg");
+    background-size: cover;
+    
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.dashboard__sideBar {
+    border-right: 0.2px solid #434245;
+    
+}
+
+.dashboard__content {
+   display: grid;
+   overflow-y: scroll;
+   grid-template-rows: 1fr 7fr;
+}
+
+
+.dashboard__content--header{
+    font-family: sans-serif;
+    color: white;
+    border-bottom: 0.2px solid #434245;
+}
+
+.dashboard__content--title{
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
+}
+
+.dashboard__content--bookTable {
+    width: 100%;
+    border-collapse: collapse;  
+    color: white;  
+}
+
+thead{
+    background-color: rgb(195, 112, 112);
+    position: sticky;
+    top: 0;
+}
+
+.container-table{
+   
+    
+    overflow-y: scroll;
+}
+
+.btn{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn__delete{
+    background-color: var(--bg-red-700);
+    color: white;
+    cursor: pointer;
+}
+
+.btn__delete:hover{
+    background-color: var(--hover-bg-red-800);
+}
+
+.btn__modify{
+    margin-right: 5px;
+    background-color: transparent;
+    border: 0.2px solid var(--bg-yellow-400);
+    color: var(--bg-yellow-400);
+    cursor: pointer;
+}
+
+.btn__modify:hover{
+    transition: all 0.2s;
+    background-color: var(--hover-bg-yellow-500);
+    color: white;
+}
+
+
+
+.sidebar--logo{
+    padding: 10px;
+    color: #8C8A9B;
+    font-family: sans-serif;
+}
+
+.section-sidebar{
+    height: 100vh;
+    width: 100%;
+}
+
+.ul-sidebar li{
+    text-align: center;
+    padding: 10px;
+    height: 40px;
+    text-decoration: none;
+}
+
+.ul-sidebar img{
+    width: 20px;
+}
+
+.ul-sidebar li a {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.ul-sidebarc img{
+    width: 15px;
+    height: 20px;
+}
+
+.sidebar--desc{
+    white-space: nowrap;
+    font-family: sans-serif;
+    color: #8C8A9B;
+    font-size: 10px;
+    padding: 10px;
+}
+
+.section-title-manage-book{
+    padding: 10px;
+    height: 30px;
+    width: 90%;
+    border-bottom: 0.2px solid #434245;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    color: white;
+}
+
+.section-title-manage-book h4{
+    margin-left: 30px;
+}
+
+.section-table{
+    display: block;
+}  

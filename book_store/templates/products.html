@@ -1,0 +1,57 @@
+{% extends  'index.html' %}
+{% load static %}
+
+{% block main_shop %}
+    <div class="line-divesion-section line2-divesion-section">
+        <hr>
+    </div>
+
+    <section class="main-shop">
+        <div class="title-and-button">
+            <h5 class="title-populair-books">MAIN SHOP</h5>
+        </div>
+
+        <form action="/" method="get" id="category__form">
+
+            <div class="category__choice">
+                <button type="button" class="btn-category" id="all-categories">All</button>
+                <button type="submit" name="category" value="Fantasy" class="btn-category" id="btn-category">Fantasy</button>
+                <button type="submit" name="category" value="Classic" class="btn-category">Classic</button>
+                <button type="submit" name="category" value="Comic" class="btn-category">Comic</button>
+                <button type="submit" name="category" value="Adventure" class="btn-category">Adventure</button>
+            </div>
+        </form>
+
+        <div class="grid-general" id="products">
+            {% if books %}
+                {% for book in books %}
+                    <div class="bg-grid-carte" id="comming from django">
+                        <div class="grid-carte-ms">
+                            <img class="image-grid" src={{ book.book_image }} alt="">
+                            <div class="infos-grid">
+                                <h5 class="title-main-books">{{ book.title }}</h5>
+                                <div class="line-main-books">
+                                    <hr>
+                                </div>
+                                <div class="writer-price">
+                                    <p>Writer</p>
+                                    <p>Price</p>
+                                </div>
+                                <div class="value-writer-price">
+                                    {% for author in book.author.all %}
+                                        <h4>{{ author.first_name }}</h4>
+                                    {% endfor %}
+                                    <h4>{{ book.price }} DHS</h4>
+                                </div>
+                                <button class="bt-add-cart">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else  %}
+                <div class="products_notFound">
+                    <h3>No book was found</h3>
+                </div>
+            {% endif %}
+    </section> 
+{% endblock main_shop %}

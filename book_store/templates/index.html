@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+{% block index %}
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <p>LOGO BOOK</p>
+        </div>
+
+        
+        <div class="login">
+            <div class="toggle">
+                <i class="fa-solid fa-bars ouvrir"></i>
+                <i class="fa-solid fa-x fermer"></i>
+            </div>
+            <i class="fa-solid fa-circle-user"></i>
+            <div class="connexion-down">
+                <a href="">
+                    <h1 class=" mot-connexion mot-cnx">Connexion</h1>
+                </a>
+                <a href="">
+                    <h1 class=" mot-register mot-cnx">Register</h1>
+                </a>
+                {% if user.is_superuser %}
+                    <a href="/admin-dashboard">
+                        <h1 class=" mot-register mot-cnx">Admin </h1>
+                    </a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <p>Hi {{ user.username }}!</p>
+                    <a href="{% url 'logout' %}">Log Out</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="bulbes_main_image">
+        <div class="bulbes">
+            <div class="background-gradient"></div>
+            <img id="bulbes" src="{% static '/images/buble.svg' %}" alt="">
+            <h4 id="ph-1" class="title-main-image">Shop your books now,</h4>
+            <h4 id="ph-2" class="title-main-image">Like never before</h4>
+        </div>
+        <div class="main_image">
+            <img id="main_image" src="{% static '/images/illustration.svg' %}" alt="">
+        </div>
+    </section>
+    <div class="line-divesion-section">
+        <hr>
+    </div>
+    <section class="populair-books">
+        <div class="title-and-button">
+            <h5 class="title-populair-books">POPULAR BOOKS</h5>
+            <div class="arrow-carousel">
+                <i id="left-p" class="fa-solid  left fa-circle-chevron fa-circle-chevron-left"></i>
+                <i id="right-p" class="fa-solid right  fa-circle-chevron fa-circle-chevron-right"></i>
+            </div>
+        </div>
+        <div class="center-carousel-pb">
+            <div id="carousel-p"  class="carousel-populair-books">
+                <div  class="content" id="content-p">
+                    {% for book in popular_books %}
+                        <div class="carte-populair-books carte-3">
+                            <img class="image-carte" src={{ book.book_image}} alt="">
+                            <div class="infos-carte">
+                                <h4 class="title-carte">{{  book.title }}</h4>
+                                <h6 class="type-carte">{{ book.categorie }}</h6>
+                                <hr class="line-divesion-carte">
+                                <div class="price-carte-plus">
+                                    <h5 class="price-carte">{{ book.price }} DHS</h5>
+                                    <h5 class="carte-plus"><i class="fa-solid fa-cart-plus"></i></h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="line-divesion-section line2-divesion-section">
+        <hr>
+    </div>
+    <section class="bestsellers-books">
+        <div class="title-and-button">
+            <h5 class="title-populair-books">BEST SELLERS</h5>
+            <div class="arrow-carousel">
+                <i id="left-bs" class="fa-solid  left-bs fa-circle-chevron fa-circle-chevron-left" ></i>
+                <i id="right-bs" class="fa-solid right-bs  fa-circle-chevron fa-circle-chevron-right"></i>
+            </div>
+        </div>
+        <div class="center-carousel-bs center-carousel-pb">
+            <div id="carousel-bs" class="carousel-bestsellers-books carousel-populair-books">
+                <div class="content" id="content-bs">
+                    {% for book in best_seller_books %}
+                            <div class="carte-bestsellers-books  carte-populair-books carte-3">
+                                <img class="image-carte" src={{ book.book_image }} alt="">
+                                <div class="infos-carte">
+                                    <h4 class="title-carte">{{  book.title }}</h4>
+                                    <h6 class="type-carte">{{ book.categorie }}</h6>
+                                    <hr class="line-divesion-carte">
+                                    <div class="price-carte-plus">
+                                        <h5 class="price-carte">{{ book.price }} DHS</h5>
+                                        <h5 class="carte-plus"><i class="fa-solid fa-cart-plus"></i></h5>
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- main shop  -->
+    {% block main_shop %}
+    {% endblock main_shop %}
+
+</main> 
+{% endblock index %}
