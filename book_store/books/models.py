@@ -15,7 +15,7 @@ class Author(models.Model):
     def __str__(self):
         return self.first_name
     
-    
+
 class Book(models.Model):
     
     class Categorie(models.TextChoices):
@@ -28,10 +28,10 @@ class Book(models.Model):
         SCIENCE = 'Science'
         LITERATURE ='literature'
         
-        
-    title = models.CharField(max_length=200, null=True)
-    isbn13 = models.CharField(max_length=14, null=True)
-    description = models.TextField(null=True)
+    
+    title = models.CharField(max_length=200, null=False, blank=False)
+    isbn13 = models.CharField(max_length=14)
+    description = models.TextField(null=True, blank=True)
     is_popular = models.BooleanField(default=False)
     is_best_seller = models.BooleanField(default=False)
     categorie = models.CharField(
@@ -40,12 +40,12 @@ class Book(models.Model):
         default=Categorie.CLASSIC
     )
     
-    book_image =  models.ImageField(upload_to ='static/images/')
-    book_language = models.CharField(max_length=25, null=True)
-    num_pages = models.IntegerField(default=0)
-    price = models.IntegerField(default=0)
+    book_image =  models.ImageField(upload_to ='images/')
+    book_language = models.CharField(max_length=25, null=True, blank=True)
+    num_pages = models.IntegerField(default=0, blank=True)
+    price = models.IntegerField(default=0, null=False, blank=False)
     
-    author = models.ManyToManyField(Author)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, blank=False, null=True)
     
     def __str__(self) -> str:
         return self.title

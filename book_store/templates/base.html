@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/styles/index.css' %}">
+    <link rel="stylesheet" href="{% static '/styles/admin.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -19,9 +20,10 @@
     <div class="body-index">
         {% block index %}
         {% endblock index %}
+
         {% block dashboard %}
         {% endblock dashboard %}
         <script src="{% static '/js/index.js' %}"></script>
-        <script src="{% static '/js/mainShop.js' %}"></script>
+        <script src="{% static '/js/admin-dashboard.js' %}"></script>
     </div>
 </body>

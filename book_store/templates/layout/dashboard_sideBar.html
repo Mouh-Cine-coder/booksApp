@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+{% block dashboard %}
+<main class="dashboard">
+    <nav class="dashboard__sideBar">
+        <ul class="ul-sidebar">
+            <li><a class="sidebar--logo" href="">LOGO</a></li>
+            <li>
+                <a href="">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <h4 class="sidebar--desc">User admin</h4>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa-solid fa-book"></i>
+                    <h4 class="sidebar--desc">Manage book</h4>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="dashboard__content">
+        <header class="dashboard__content--header">
+            <h4 class="dashboard__content--title">Manage Book</h4>
+            <input class="btn-add" id="btn-add" type="button"  value="Add">  
+        </header>
+        <div class="container-table">
+            <table class="dashboard__content--bookTable">
+                <thead class="dashboard__content--bookTable-header">
+                    <tr>
+                        <th>#</th>
+                        <th>Book title</th>
+                        <th>Writer</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author.first_name }}</td>
+                            <td>{{ book.categorie }}</td>
+                            <td>{{ book.price }}</td>
+                            <td>
+                                <input  class="btn btn__modify" type="submit" value="modify" />
+                                <input id="btn-delete" class="btn btn__delete" type="submit" value="delete" />
+                            </td>
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="delete-modal" class="delete__modal">
+        <div class="delete__modal--content">
+            <span id="btn-close" class="delete__modal--close">&times;</span>
+            <svg class="delete__modal--icon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="-13 -15 50 50" fill="none">
+                <path
+                    d="M3.8161 21.4911C2.62223 20.338 1.66995 18.9587 1.01484 17.4337C0.359723 15.9086 0.0148947 14.2684 0.000471959 12.6086C-0.0139507 10.9489 0.30232 9.30288 0.930832 7.76668C1.55934 6.23047 2.48751 4.83482 3.66117 3.66117C4.83482 2.48751 6.23047 1.55934 7.76668 0.930832C9.30288 0.30232 10.9489 -0.0139507 12.6086 0.000471959C14.2684 0.0148947 15.9086 0.359723 17.4337 1.01484C18.9587 1.66995 20.338 2.62223 21.4911 3.8161C23.7681 6.17363 25.028 9.33116 24.9995 12.6086C24.971 15.8861 23.6564 19.0212 21.3388 21.3388C19.0212 23.6564 15.8861 24.971 12.6086 24.9995C9.33116 25.028 6.17363 23.7681 3.8161 21.4911ZM19.7286 19.7286C21.605 17.8522 22.6592 15.3072 22.6592 12.6536C22.6592 9.99996 21.605 7.45501 19.7286 5.5786C17.8522 3.7022 15.3072 2.64804 12.6536 2.64804C9.99996 2.64804 7.45501 3.7022 5.5786 5.5786C3.7022 7.45501 2.64804 9.99996 2.64804 12.6536C2.64804 15.3072 3.7022 17.8522 5.5786 19.7286C7.45501 21.605 9.99996 22.6592 12.6536 22.6592C15.3072 22.6592 17.8522 21.605 19.7286 19.7286ZM11.4036 6.4036H13.9036V13.9036H11.4036V6.4036ZM11.4036 16.4036H13.9036V18.9036H11.4036V16.4036Z"
+                    fill="#9CA3AF" />
+            </svg>
+            <h4 class="delete__modal--warning">Are you sure you want to delete this book ?</h4>
+            <div class="delete__modal--buttons">
+                <input class="delete__modal--btn-yes delete__modal--btn" type="button" value="Yes, I'm sure">
+                <input id="btn-cancel" class="delete__modal--btn-no delete__modal--btn" type="button" value="No, cancel">
+            </div>
+        </div>    
+    </div>
+
+    <div id="add-modal"  class="add-modal">
+        <div  class="add__modal--content">
+            <span class="add__modal--close" >&times;</span>
+            <h4 class="add__modal--title">Add a new book</h4>
+
+            <form class="add__modal--form" enctype="multipart/form-data" method="post" action="" id="form-add-book">
+                {% csrf_token %}
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">*Book title:</label>
+                    <input class="add__modal--input" type="text" placeholder="Book title" name="title" required>
+                </div>
+
+                
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">*Author:</label>
+                    <select class="add__modal--input select-input" name="author_id" required>
+                        {% for author in authors %}
+                            <option class="add__modal--option"  value={{ author.id }}>{{ author.first_name }} {{ author.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <h6 class="add__modal--book">add an author from here &#43;</h6>
+                </div>
+
+                
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">Book category:</label>
+                    <select class="add__modal--input select-input" name="" id="" name="category">
+                        <option class="add__modal--option"  value="Fantasy">Fantasy</option>
+                        <option class="add__modal--option"  value="Comic">Comic</option>
+                        <option  class="add__modal--option"  value="Classic">Classic</optio>
+                        <option class="add__modal--option"  value="Horror">Horror</option>
+                    </select>
+                </div>
+
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">isbn13:</label>
+                    <input class="add__modal--input" type="text" placeholder="isbn13" name="isbn13">
+                </div>
+
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">*Book price:</label>
+                    <input class="add__modal--input" type="number" placeholder="Book price" name="price" required>
+                </div>
+
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">Book resume:</label>
+                    <input class="add__modal--input" type="text" placeholder="Book resume" name="resume">
+                </div>
+
+               
+
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="is_popular">popular book:</label>
+                    <input  type="hidden" name="is_popular" value="False">
+                    <input class="add__modal--input" type="checkbox" name="is_popular" placeholder="Book resume" >
+                </div>
+
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="is_best_seller">best seller book:</label>
+                    <input  type="hidden" name="is_best_seller" value="False">
+                    <input class="add__modal--input" type="checkbox" name="is_best_seller" placeholder="Book resume" >
+                </div>
+
+                <div class="add__modal--form-data">
+                    <label class="add__modal--label" for="">*Upload file:</label>
+                    <input class="add__modal--input add__modal--file" type="file" accept="image/*" name="picture" required>
+                </div>
+                <input id="btn-add" class="add__modal--btn" type="submit" value="Add" id="form-add-book-submitter">
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock dashboard %}

@@ -29,6 +29,28 @@ body::-webkit-scrollbar-thumb {
 
 }
 
+*::-webkit-scrollbar {
+    width: 2px;
+}
+
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    width: 2px;
+}
+
+   
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar {
+    background-color: darkgrey;
+
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+
+}
+
 *{
     font-family: sans-serif;
     box-sizing: border-box;
@@ -88,7 +110,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 svg{
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
 }
 
 .login{

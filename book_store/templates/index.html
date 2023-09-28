@@ -39,17 +39,33 @@
     <section class="bulbes_main_image">
         <div class="bulbes">
             <div class="background-gradient"></div>
-            <img id="bulbes" src="{% static '/images/buble.svg' %}" alt="">
-            <h4 id="ph-1" class="title-main-image">Shop your books now,</h4>
+            <img id="bulbes" src="{% static "images/buble.svg" %}" alt="">
+            <h4 id="ph-1" class="title-main-image">Shop your books now</h4>
             <h4 id="ph-2" class="title-main-image">Like never before</h4>
         </div>
         <div class="main_image">
-            <img id="main_image" src="{% static '/images/illustration.svg' %}" alt="">
+            <img id="main_image" src="{% static '/images/illustration.svg' %} " alt="">
         </div>
     </section>
-    <div class="line-divesion-section">
-        <hr>
+    
+    <!--
+        <div class="line-divesion-section">
+            <hr>
+        </div>
+    -->
+
+    <div class="category__choice">
+        <a href="{% url 'index_page'  %}">All</a>
+        <a href="{% url 'catergories' 'Classic' %}">Classic</a>
+        <a href="{% url 'catergories' 'Fantasy'  %}">Fantasy</a>
+        <a href="{% url 'catergories' 'Comic' %}">Comic</a>
+        <a href="{% url 'catergories' 'Adventure'  %}">Adventure</a>  
     </div>
+    
+    <!-- main shop  -->
+    {% block main_shop %}
+    {% endblock main_shop %}
+  
     <section class="populair-books">
         <div class="title-and-button">
             <h5 class="title-populair-books">POPULAR BOOKS</h5>
@@ -63,9 +79,9 @@
                 <div  class="content" id="content-p">
                     {% for book in popular_books %}
                         <div class="carte-populair-books carte-3">
-                            <img class="image-carte" src={{ book.book_image}} alt="">
+                            <img class="image-carte" src="{{ book.book_image.url }}" alt="">
                             <div class="infos-carte">
-                                <h4 class="title-carte">{{  book.title }}</h4>
+                                <h4 class="title-carte">{{ book.title }}</h4>
                                 <h6 class="type-carte">{{ book.categorie }}</h6>
                                 <hr class="line-divesion-carte">
                                 <div class="price-carte-plus">
@@ -95,7 +111,7 @@
                 <div class="content" id="content-bs">
                     {% for book in best_seller_books %}
                             <div class="carte-bestsellers-books  carte-populair-books carte-3">
-                                <img class="image-carte" src={{ book.book_image }} alt="">
+                                <img class="image-carte" src="{{ book.book_image.url }}" alt="">
                                 <div class="infos-carte">
                                     <h4 class="title-carte">{{  book.title }}</h4>
                                     <h6 class="type-carte">{{ book.categorie }}</h6>
@@ -111,9 +127,6 @@
             </div>
         </div>
     </section>
-    <!-- main shop  -->
-    {% block main_shop %}
-    {% endblock main_shop %}
-
+  
 </main> 
 {% endblock index %}
