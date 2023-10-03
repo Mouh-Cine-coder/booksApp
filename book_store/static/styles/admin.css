@@ -7,6 +7,7 @@
     --black : #000000;
     --white: white;
     --dark-gray : #6B7280;
+    --gray-400: #9ca3af;
     --light-gray : #e5e7eb;
     --demidark-gray : #9ca3af;
     --verylight-gray :#f3f4f6;
@@ -14,6 +15,13 @@
     --green-800 : #166534;
     --blue-700 : #1d4ed8;
     --blue-800: #1e40af;
+
+    --lime-400: #84cc16;
+    --lime-500: #84cc16;
+}
+
+li {
+    text-decoration: none;
 }
 
 *{
@@ -44,9 +52,20 @@ tr {
     border-bottom: 0.2px solid gray;
 }
 
+.pageNotFound {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+.pageNotFound__img {
+    width: 500px;
+    height: 500px;
+
+}
+
 .dashboard {
     background-color: #0E0A2D;
-    background-image: url("images/Rectangle\ 27.svg");
+    /* background-image: url("images/Rectangle\ 27.svg"); */
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -55,54 +74,60 @@ tr {
 }
 
 .dashboard__sideBar {
-    border-right: 0.2px solid #434245;
+    height: 100vh;
+    /* top | right | bottom | left */
+    padding: 15% 0 15% 0;
+    height: fit-content;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
 }
 
-.ul-sidebar {
-   text-decoration: none;
-   list-style: none;
-   padding: 10px;
-}
-
-.ul-sidebar li {
-    margin-top: 30px;
-}
-
-.ul-sidebar li a {
-    width: 100%;
-    display: flex;
-    align-items: center;
+.dashboard__sideBar--logo {
     text-align: center;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
-.ul-sidebar li a h4 {
+.dashboard__sideBar--nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    
+}
+
+.dashboard__sideBar--nav-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* top | right | bottom | left */
+    padding: 7% 5% 7% 5%; 
+    
+    
+}
+
+
+.nav-link:hover {
+    background-color: #4f78e9;
+}
+
+.dashboard__sideBar--nav-link-title {
+    
     color: var(--demidark-gray);
-    font-size: 11px;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 14px;
+    margin-left: 6%;
 }
 
-.ul-sidebar li a i {
-    color: var(--demidark-gray);
-    padding: 5px;
-    margin-right: 10px;
-}
-
-.fa-user-gear{
-    height: 32px;
-    width: 40px;
-    font-size: 20px;
-}
-
-.fa-book{
-    width: 40px;
-    height: 30px;
-    font-size: 20px;
-}
 
 
 .dashboard__content {
    display: grid;
    overflow-y: scroll;
-   grid-template-rows: 1fr 7fr ;
+   grid-template-rows: 1fr 7fr;
+   border-left: 0.2px solid #434245;
 }
 
 
@@ -159,12 +184,14 @@ thead{
 }
 
 .btn{
+    padding: 8px;
+    text-decoration: none;
     border: none;
-    padding: 10px;
     border-radius: 5px;
 }
 
 .btn__delete{
+    padding: 10px;
     background-color: var(--bg-red-700);
     color: white;
     cursor: pointer;
@@ -175,6 +202,8 @@ thead{
 }
 
 .btn__modify {
+    
+
     margin-right: 5px;
     background-color: transparent;
     border: 0.2px solid var(--bg-yellow-400);
@@ -182,11 +211,13 @@ thead{
     cursor: pointer;
 }
 
-.btn__modify:hover {
+
+.btn__modify:hover{
     transition: all 0.2s;
     background-color: var(--hover-bg-yellow-500);
     color: white;
 }
+
 
 
 /************* DELETE MODAL ******/
@@ -249,18 +280,23 @@ thead{
 }
 
 .delete__modal--buttons {
-    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin-top: 25px;
+    gap: 5px;
 }
 
 .delete__modal--btn {
     cursor: pointer;
-    width: 30%;
+    
     padding: 10px;
     border-radius: 5px;
+    
 }
 
 .delete__modal--btn-yes {
-    margin-right: 10px;
     color: white;
     background-color: var(--bg-red-600);
     border: none;
@@ -292,6 +328,7 @@ thead{
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
+
 
 .add__modal--content{
     margin: auto;
@@ -329,6 +366,11 @@ thead{
     margin: 15px;
     font-size: 20px;
     font-weight: 400;
+}
+
+.add__modal--input {
+    color: black;
+    padding: 5px;
 }
 
 .add__modal--close{
@@ -386,7 +428,8 @@ thead{
     font-weight: 500;
 }
 
-.add__modal--btn {
+.add__modal--btn,
+.modifyForm--btn {
     padding: 10px;
     width: 120px;
     border: none;
@@ -404,6 +447,394 @@ thead{
 }
 
 
+/*** css for edit book form ****/
+
+
+.editBook-container {
+    overflow-y: scroll;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 2fr 6fr;
+    position: relative;
+    
+}
+
+
+.editBook-img {
+    height: 300px;
+    width: 200px;
+    
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.imageInput {
+    position: absolute;
+    top: 0;
+    margin-left: 15%;
+
+    grid-column-start: 3;
+    grid-column-end: 4;
+    
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.drop-container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+    background: #eeeeee56;
+    border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+    color: #222;
+}
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+.modifyForm {
+    height: fit-content;
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    grid-row-start: 2;
+    grid-row-end: 4;
+
+    display: grid;
+    grid-template-columns: auto 5fr;
+    grid-template-rows: auto 6fr;
+    margin-top: 5%;
+    
+
+}
+
+.modifyForm--input {
+    /* top | right | bottom | left */
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: var(--black);
+
+}
+.modifyForm--form-data {
+    width: 450px;
+    height: auto;
+    padding: 3% 0 3% 0;
+    
+}
+.titleInput {
+    /** first column**/
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+    
+    
+}
+.textarea {
+    padding: 2px;
+    border-radius: 0;
+}
+.isbnInput {
+    /** second column**/
+    grid-column-start: 4;
+    grid-column-end: 5;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+}
+
+.categoryInput {
+    /** first column**/
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.authorInput {
+    /** second column**/
+    grid-column-start: 4;
+    grid-column-end: 5;
+
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    display: flex;
+    flex-direction: column;
+    
+
+    
+}
+
+.priceInput {
+    /** first column**/
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.resumeInput {
+    /** second column**/
+    grid-column-start: 4;
+    grid-column-end: 5;
+
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.isbestseller {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 4;
+    grid-row-end: 5;
+
+}
+
+.ispopular {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+
+}
+.modifyForm--btn {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 5;
+    grid-row-end: 6;
+    
+    margin-bottom: 3%;
+}
+
+
+.modifyForm--input::placeholder {
+    color: var(--dark-gray);
+}
+
+
+
+.isbnInput,
+.isbestseller,
+.resumeInput,
+.authorInput {
+    margin-left: 10px;
+}
+
+
+.authorInput,
+.categoryInput {
+    width: 300px;
+}
+
+
+/***** profile css ****/
+
+.profile {
+    width: 100%;
+    padding: 2%;
+    position: relative;
+}
+
+.profile__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile__info {
+    margin-top: 5%;
+}
+
+.profile__info--form {
+    min-height: fit-content;
+}
+
+.profile__info--input {
+    width: 300px;
+    height: 55px;
+    padding: 20px
+}
+
+.profile__info--inputFields {
+    margin-top: 40px;
+    
+}
+
+.profile__info--input {
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    color: var(--black);
+    
+}
+
+.profile__info--input:disabled {
+    color: var(--white);
+}
+
+.profile__info--input::placeholder {
+    color: var(--dark-gray);
+}
+
+.profile__info--input:disabled::placeholder {
+    color: var(--gray-400);
+}
+
+.profile__info--able,
+.profile__info--submit {
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: var(--green-700);
+    color: var(--white);
+    margin-top: 12px;
+    padding: 15px 5px 15px 5px;
+    cursor: pointer;
+}
+
+.profile__info--submit {
+    display: none;
+    border: none;
+}
+
+.profile__changePassword {
+    position: absolute;
+    margin: 2%;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    border: 0.2px solid var(--bg-red-600);
+    border-radius: 5px;
+    color: var(--bg-red-600);
+}
+
+.drop-container-profile {
+    margin-top: 2%;
+    display: none;
+}
+
+.inputField-second {
+    margin-left: 6px;
+}
+/****** css for manage users ****/
+
+.add-staff {
+    margin-right: 30px;
+    font-size: 15px;
+    width: fit-content;
+    padding: 12px;
+    background-color: var(--green-700);
+    border: none;
+    border-radius: 5px;
+}
+
+.view__user {
+    margin-right: 5px;
+    color: var(--lime-400);
+    /* top | right | bottom | left */
+    padding: 7px 12px 8px 12px;
+    border: .2px solid var(--lime-400);
+
+    border-radius: 5px;
+
+}
+
+.view__user:hover {
+    border: .2px solid var(--lime-500);
+    background-color: var(--lime-500);
+    color: var(--white);
+    transition: all 0.2s;
+}
+
+.add_user {
+    padding: 2%;
+
+}
+
+.add__user--form {
+    padding: 5%;
+}
+
+.add__user-fields {
+    margin-top: 15px;
+}
+
+.add__user-input {
+    width: 250px;
+    height: 50px;
+    padding: 15px;
+
+    border: none;
+    border-radius: 5px;
+    color: var(--black);
+
+    outline: none;
+
+}
+
+.add__user-fields-checkboxes {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.add_user-drop-container-profile {
+    position: relative;
+    display: flex;
+    margin-left: 0;
+    margin-bottom: 15px;
+    height: 150px;
+    width: 510px;
+}
+
+.delete__user-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: var(--bg-red-600);
+    color: var(--white);
+}
+/*********************************** add user css *************************************************/
 
 @media  (max-height: 550px) {
     
@@ -412,7 +843,5 @@ thead{
         margin: 1% auto 1% auto;
         
     }
-    
-    
     
   }

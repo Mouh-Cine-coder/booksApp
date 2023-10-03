@@ -3,32 +3,30 @@
 {% block index %}
 <header>
     <nav class="navbar">
-        <div class="logo">
-            <p>LOGO BOOK</p>
-        </div>
+        <p class="navbar__logo">LOGO BOOK</p>
 
         
-        <div class="login">
-            <div class="toggle">
+        <div class="navbar__login">
+            <div class="toggle" id="toggle-register">
                 <i class="fa-solid fa-bars ouvrir"></i>
                 <i class="fa-solid fa-x fermer"></i>
             </div>
             <i class="fa-solid fa-circle-user"></i>
             <div class="connexion-down">
                 <a href="">
-                    <h1 class=" mot-connexion mot-cnx">Connexion</h1>
+                    <h1 class=" mot-connexion mot-cnx" style="color: black;">Connexion</h1>
                 </a>
-                <a href="">
-                    <h1 class=" mot-register mot-cnx">Register</h1>
+                <a href="{% url 'register'  %}">
+                    <h1 class=" mot-register mot-cnx" style="color: black;">Register</h1>
                 </a>
                 {% if user.is_superuser %}
-                    <a href="/admin-dashboard">
-                        <h1 class=" mot-register mot-cnx">Admin </h1>
+                    <a href="/admin-dashboard/manage-book">
+                        <h1 class=" mot-register mot-cnx" style="color: black;">Admin</h1>
                     </a>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <p>Hi {{ user.username }}!</p>
-                    <a href="{% url 'logout' %}">Log Out</a>
+                    <p style="color: black; font-size: 12px;">Hi {{ user.username }}!</p>
+                    <a href="{% url 'logout' %}" style="color: black; font-size: 12px;">Log Out</a>
                 {% endif %}
             </div>
         </div>
@@ -40,8 +38,8 @@
         <div class="bulbes">
             <div class="background-gradient"></div>
             <img id="bulbes" src="{% static "images/buble.svg" %}" alt="">
-            <h4 id="ph-1" class="title-main-image">Shop your books now</h4>
-            <h4 id="ph-2" class="title-main-image">Like never before</h4>
+            <h4 class="title-main-image ph-1">Shop your books now</h4>
+            <h4 class="title-main-image ph-2">Like never before</h4>
         </div>
         <div class="main_image">
             <img id="main_image" src="{% static '/images/illustration.svg' %} " alt="">
@@ -129,4 +127,5 @@
     </section>
   
 </main> 
+<script src="{% static '/js/index.js' %}"></script>
 {% endblock index %}

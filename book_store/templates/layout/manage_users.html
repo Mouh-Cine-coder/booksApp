@@ -1,0 +1,41 @@
+{% extends "./dashboard_sideBar.html" %}
+{% load static %}
+{% block header_title %}
+    Manage users
+{% endblock header_title %}
+{% block header_btn %}
+    <a href="{% url 'add_user'  %}" class="add-staff">Create account for staff</a>
+{% endblock header_btn %}
+
+
+
+{% block manage_users %}
+        <div class="container-table">
+            <table class="dashboard__content--bookTable">
+                <thead class="dashboard__content--bookTable-header">
+                    <tr>
+                        <th>#</th>
+                        <th>username</th>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in users %}
+                        <tr>
+                            <td>{{ customer.id }}</td>
+                            <td>{{ customer.username }}</td>
+                            <td>{{ customer.first_name }}</td>
+                            <td>{{ customer.last_name }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>
+                                <a href="{% url "edit_user" customer.pk %}" id="btn-modify" class="view__user">view</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock manage_users %}

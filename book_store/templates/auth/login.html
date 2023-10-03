@@ -1,0 +1,20 @@
+{% extends "./auth_base.html" %}
+{% load static %}
+{% block login %}
+
+    <section class="auth__login">
+        <h1 class="auth__login--title"><span class="title_blue">Welcome</span> Back</h1>
+        <h2 class="auth__register-title"><span class="title_blue">Log</span> In</h2>
+        <form action="{% url 'signin'  %}" method="POST" class="auth__register-form auth__login-form">
+            {% csrf_token %}
+            <div class="auth__register-from-fields auth__register-from-fields--login">
+                <input type="text" class="auth__regitser-form--input" placeholder="username" name="login_username" >
+                <input type="password" class="auth__regitser-form--input" placeholder="passoword" name="login_password">
+            </div>
+
+            <a href="{% url 'register'  %}" class="auth__redirect">Back to signup</a>
+            <input type="submit" value="LogIn" class="auth__regitser--submitbtn auth__regitser--submitbtn--login">
+        </form>
+    </section>
+
+{% endblock login %}

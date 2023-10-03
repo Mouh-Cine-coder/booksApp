@@ -1,24 +1,12 @@
 "use client";
 
-let toggle = document.querySelector('.toggle');
+let toggle = document.getElementById('toggle-register');
 let body = document.querySelector('body');
 
 toggle.addEventListener('click', function () {
     body.classList.toggle('open');
 })
 
-
-
-// document.addEventListener('scroll', () => {
-//     const element = document.querySelector('.choice-category');
-//     const distance = element.getBoundingClientRect().top;
-
-//     if (distance <= 0) {
-//         element.classList.add("scrolled");
-//     } else {
-//         element.classList.remove("scrolled");
-//     }
-// });
 
 
 

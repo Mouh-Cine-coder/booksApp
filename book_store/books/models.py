@@ -52,9 +52,6 @@ class Book(models.Model):
     
    
     
-    
-    
-  
 class CustomerOrder(models.Model):
     order_date = models.DateField()
     destination_address = models.CharField()
