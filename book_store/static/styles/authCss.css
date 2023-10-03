@@ -1,0 +1,202 @@
+:root {
+    /* ---------------------------------- */
+    /*               Colors               */
+    /* ---------------------------------- */
+
+    /* -------------- Reset ------------- */
+    --background        : #ffffff;
+
+    /* -------------- Basic ------------- */
+    --white             : #fff;
+    --black             : #000;
+    --bg-btn            : #65a30d;
+    --input-border      : #0369a1;
+    --title-color       : #0ea5e9;
+    --url-login         : #1d4ed8;
+
+    /* -------------- Gray -------------- */
+    --imgBackground: #DCDBDB;
+
+    /* ---------------------------------- */
+    /*                Fonts               */
+    /* ---------------------------------- */
+
+    /* ------------- Family ------------- */
+    --fontFamily        : "Quicksand", sans-serif;
+
+    /* -------------- Sizes ------------- */
+    --fontSizeRoot      : 16px;
+    --fontSizeSmall     : 0.875rem;
+
+    /* ------------- Weights ------------ */
+    --fontWeightBold    : 700;
+    --fontWeightThin    : 300;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: var(--fontSizeRoot);
+}
+  
+body {
+    font-family: var(--fontFamily);
+    background: var(--background);
+    
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+menu,
+figure {
+    padding: 0;
+    margin: 0;
+}
+
+ol,
+ul,
+menu {
+    list-style: none;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button {
+    background: none;
+    border: 0;
+}
+
+.auth {
+    display: grid;
+    grid-template-columns: 50% 2fr;
+    height: 100vh;
+}
+
+
+.auth__img {
+    height: inherit;
+    width: 100%;
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    background-color: var(--imgBackground);
+}
+
+
+
+
+.auth__login,
+.auth__register {
+    height: inherit;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    position: relative;
+}
+
+
+
+.auth__register-title {
+    font-size: 45px;
+}
+
+.auth__login--title {
+    font-size: 50px;
+    position: absolute;
+    top: 1%;
+    left: 2%;
+}
+.title_blue {
+    color: var(--title-color);
+    
+}
+
+.auth__register-form {
+    text-align: center;
+    margin-top: -15%;
+    padding: 5%;
+    position: relative;
+}
+
+
+.auth__login-form {
+    margin-top: -24%;
+}
+
+.auth__redirect {
+    display: block;
+    position: absolute;
+
+    font-size: 12px;
+    color: var(--url-login);
+    float: left;
+}
+
+.auth__register-from-fields {
+    margin-bottom: 10px;
+    gap: 30px;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.auth__register-from-fields--login {
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.auth__regitser-form--input {
+    padding: 16px 25px;
+    border: .2px solid var(--input-border);
+    border-radius: 5px;
+}
+
+
+
+.auth__regitser--submitbtn {
+    padding: 12px;
+    width: 22%;
+    margin-top: 6%;
+    
+    color: var(--white);
+    background-color: var(--bg-btn);
+    border: none;
+    border-radius: 5px;
+}
+
+.auth__regitser--submitbtn--login {
+    width: 50%;
+    margin-top: 10%;
+}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block 404 %}
+    <div class="pageNotFound">
+        <h2>Page not found</h2>
+        <img src="{% static 'images/404.svg' %}" class="pageNotFound__img" alt="404 image" srcset="">
+    </div>
+{% endblock 404 %}

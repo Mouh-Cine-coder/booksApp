@@ -1,0 +1,62 @@
+{% extends "./dashboard_sideBar.html" %}
+{% load static %}
+{% block header_title %}
+    add user
+{% endblock header_title %}
+{% block header_btn %}
+{% endblock header_btn %}
+
+{% block add_user %}
+    <div class="add_user">
+        <h1 class="add_user--title">create a user from here:</h1>
+        <form class="add__user--form" enctype="multipart/form-data" method="POST" action="" id="add_user_form">
+            {% csrf_token %}
+            <div class="add__user-fields">
+                <input class="add__user-input" type="text"  name="username"  placeholder="Username" required >
+                <input class="add__user-input inputField-second" type="email" name="email"  placeholder="Email" id="email_id" required >
+            </div>
+
+            <div class="add__user-fields">
+                <input class="add__user-input" type="text"  name="first_name"  placeholder="first name" required >
+                <input class="add__user-input inputField-second" type="text" name="last_name"  placeholder="last name"  required >
+            </div>
+
+            <div class="add__user-fields add__user-fields-checkboxes">
+                <div class="add__user-fields--checkbox"> 
+                    <input  type="checkbox" name="is_staff" >
+                    <label for="is_staff">is staff</label>
+                </div>  
+    
+                <div class="add__user-fields--checkbox"> 
+                    <input  type="checkbox" name="is_superuser" >
+                    <label for="is_superuser">is superuser</label>
+                </div> 
+            </div>
+
+            <div class="add__user-fields">
+                <div id="message" style="color: red;"></div>
+                <input class="add__user-input" type="password"  name="password"  placeholder="password" id="add_user_password_id" required >
+                <input class="add__user-input inputField-second" type="password" name="confirm_password"  placeholder="confirm password" id="add_user_confirm_password_id"  required >
+            </div>
+
+            <div class="add__user-fields">
+                <label for="images" class="drop-container imageInput add_user-drop-container-profile" name="add_user_image" >
+                    <span class="drop-title">Drop files here</span>
+                    or
+                    <input type="file" id="images" accept="image/*" name="add_user_picture">
+                </label>
+            </div>
+
+
+            <input class="" type="submit" value="Add" id="add_user_submit">
+        </form>
+
+        <div>
+            {% if res %}
+                <div >{{ res }}</div>
+            {% endif %}
+        </div>
+        <script src="{% static '/js/add-user.js' %}"></script>
+    </div>
+
+{% endblock add_user %}

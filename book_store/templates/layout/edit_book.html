@@ -1,0 +1,82 @@
+{% extends "./dashboard_sideBar.html" %}
+{% load static %}
+{% block header_title %} Edit book {% endblock header_title %}
+{% block header_btn %}{% endblock header_btn %}
+
+{% block edit_book %}
+    <div class="editBook-container">
+        <img class="editBook-img" src="{{ book.book_image.url }}" alt="">
+        <form class="modifyForm" enctype="multipart/form-data" method="POST" action="" >
+            {% csrf_token %}
+            <div class="modifyForm--form-data titleInput">
+                <input class="modifyForm--input" type="text" placeholder="Book title" name="title" value="{{ book.title }}" required>
+            </div>
+        
+            
+            <div class="modifyForm--form-data isbnInput">
+                <input class="modifyForm--input" type="text" placeholder="isbn13" name="isbn13" value={{ book.isbn13 }}>
+            </div>
+        
+            
+            <div class="modifyForm--form-data categoryInput">
+                <label class="modifyForm--label" for="">Book category:</label>
+                <select class="modifyForm--input select-input" name=""   id="" name="category" value={{ book.categorie }}>
+                    <option class="modifyForm--option"  value="Fantasy">Fantasy</option>
+                    <option class="modifyForm--option"  value="Comic">Comic</option>
+                    <option  class="modifyForm--option"  value="Classic">Classic</optio>
+                    <option class="modifyForm--option"  value="Horror">Horror</option>
+                </select>
+            </div>
+        
+            
+            <div class="modifyForm--form-data authorInput">
+                <label class="modifyForm--label" for="">Author:</label>
+                <select class="modifyForm--input select-input" name="author_id" required>
+                    {% for author in authors %}
+                            <option class="modifyForm--option"  value={{ author.id }}>{{ author.first_name }} {{ author.last_name }}</option>
+                        {% endfor %}
+                </select>
+            </div>
+        
+            <div class="modifyForm--form-data priceInput">
+                <input class="modifyForm--input" type="number" placeholder="Book price" name="price" value={{ book.price }} required>
+            </div>
+        
+            <div class="modifyForm--form-data resumeInput">
+                <textarea class="modifyForm--input textarea" name="resume" rows="5" cols="50" value="{{book.description}}">{{book.description}}</textarea>
+            </div>
+        
+        
+        
+            <div class="modifyForm--form-data ispopular">
+                {% if book.is_popular %}
+                    <input class="modifyForm--input" type="checkbox" name="is_popular" checked='true' id="is_popular_id">
+                {% else %}
+                    <input class="modifyForm--input" type="checkbox" name="is_popular"   id="is_popular_id">
+                {% endif %}
+                <label class="modifyForm--label" for="is_popular">popular book:</label>
+            </div>
+            
+            <div class="modifyForm--form-data isbestseller">
+                {% if book.is_best_seller %}
+                    <!-- this one sent to the form -->
+                    <input class="modifyForm--input" type="checkbox" name="is_best_seller"  checked="true" id="is_best_seller_id">
+                {% else %}
+                    <input class="modifyForm--input" type="checkbox" name="is_best_seller"  id="is_best_seller_id">
+                {% endif %}
+
+                <label class="modifyForm--label" for="is_best_seller">best seller book:</label>
+            </div>
+            
+
+            <label for="images" class="drop-container imageInput" id="dropcontainer">
+                <span class="drop-title">Drop files here</span>
+                or
+                <input type="file" id="images" accept="image/*" name="picture" value={{book.book_image}}>
+            </label>
+            
+            <input  class="modifyForm--btn" type="submit" value="Edit" >
+        </form>
+        <script src="{% static '/js/edit-book.js' %}"></script>
+    </div>
+{% endblock edit_book %}

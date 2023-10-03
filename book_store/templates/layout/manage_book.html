@@ -1,0 +1,37 @@
+{% extends "./dashboard_sideBar.html" %}
+{% load static %}
+{% block header_title %}
+    Manage Book
+{% endblock header_title %}
+{% block manage_book %}
+        <div class="container-table">
+            <table class="dashboard__content--bookTable">
+                <thead class="dashboard__content--bookTable-header">
+                    <tr>
+                        <th>#</th>
+                        <th>Book title</th>
+                        <th>Writer</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author.first_name }}</td>
+                            <td>{{ book.categorie }}</td>
+                            <td>{{ book.price }}</td>
+                            <td>
+                                <a href="{% url 'edit_book' book.pk %}" id="btn-modify" class="btn btn__modify">Edit</a>
+                                <button  class="btn btn__delete" value={{ book.id }} >delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+{% endblock manage_book %}

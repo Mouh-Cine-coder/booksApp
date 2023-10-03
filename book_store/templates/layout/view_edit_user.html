@@ -1,0 +1,73 @@
+{% extends "./dashboard_sideBar.html" %}
+{% load static %}
+{% block header_title %}
+    view/edit user
+{% endblock header_title %}
+{% block header_btn %}
+{% endblock header_btn %}
+
+{% block view_edit_user %}
+<div class="profile">
+    {% if staff.user_image %}
+        <img src="{{ staff.user_image.url }}" alt="user image" class="profile__image" >
+    {% else %}
+        <img src="{% static 'images/profile-picture.svg' %}" alt="user image" class="profile__image" >
+    {% endif %}
+    <div class="profile__info">
+        <h3>User info: </h3>
+        <form action="" method="post" enctype="multipart/form-data" class="profile__info--form">
+            {% csrf_token %}
+    
+            <div class="profile__info--inputFields">
+                <input class="profile__info--input" type="text"  name="username" value="{{ staff.username }}" placeholder="Username" id="username_id" required disabled>
+                <input class="profile__info--input inputField-second" type="email" name="email" value={{ staff.email }} placeholder="Email" id="email_id" required disabled>
+            </div>
+    
+            <div class="profile__info--inputFields">
+                <input  class="profile__info--input" type="text" name="first_name" value="{{ staff.first_name }}" placeholder="first name" id="first_name_id" disabled>
+                <input  class="profile__info--input inputField-second" type="text" name="last_name" value="{{ staff.last_name }}" placeholder="last name" id="last_name_id" disabled>
+            </div>
+
+            <label for="images" class="drop-container imageInput drop-container-profile" id="user_image_id">
+                <span class="drop-title">Drop files here</span>
+                or
+                <input type="file" id="images" accept="image/*" name="user-picture" value={{ staff.user_image }}>
+            </label>
+            
+            <div class="profile__info--inputFields">
+                {% if staff.is_staff %}
+                    <input class="modifyForm--inpu" type="checkbox" name="is_staff"  checked="true" id="is_staff" disabled>
+                {% else %}
+                    <input class="modifyForm--input" type="checkbox" name="is_staff"  id="is_staff" disabled>
+                {% endif %}
+                <label class="modifyForm--label" for="is_staff">staff</label>
+            </div>
+
+            <div class="profile__info--inputFields">
+                {% if staff.is_superuser %}
+                    <input class="modifyForm--inpu" type="checkbox" name="is_superuser"  checked="true" id="is_superuser" disabled>
+                {% else %}
+                    <input class="modifyForm--input" type="checkbox" name="is_superuser"  id="is_superuser" disabled>
+                {% endif %}
+                <label class="modifyForm--label" for="is_superuser">super staff</label>
+            </div>
+
+            
+            <input type="submit" class="profile__info--submit" id="submit_profile_id" value="Submit">
+            <div class="profile__info--able" id="able-inputs">Edit</div>
+        </form>
+        <a href="" class="profile__changePassword">change password</a>
+    </div>
+
+    <div class="delete__modal--buttons">
+        <form  method="post" action="{% url 'edit_user' staff.id %}">
+            {% csrf_token %}
+            {% comment %} <input type="hidden" name="delete-conf-user"> {% endcomment %}
+            {% comment %} <input type="submit" value="Delete user" class="delete__user-btn" > {% endcomment %}
+            <button type="submit" name="delete-conf-user" class="delete__user-btn" >Delete user</button>
+        </form>
+    </div>
+    
+    <script src="{% static '/js/edit-user.js' %}"></script>
+</div>
+{% endblock view_edit_user %}

@@ -6,5 +6,5 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Customer(AbstractUser):
-    pass
+    user_image =  models.ImageField(upload_to ='imagesUsers/', blank=True, null=True)
 
